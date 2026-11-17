@@ -16,6 +16,9 @@
   --badge-text: #38bdf8;
   --success: #22c55e;
   --warning: #f59e0b;
+  --english-bg: #1a1333;
+  --english-card-bg: #231b42;
+  --english-accent: #a78bfa;
   --shadow-sm: 0 2px 8px rgba(0,0,0,.25);
   --shadow-md: 0 8px 24px rgba(0,0,0,.3);
   --radius: 12px;
@@ -34,6 +37,9 @@
   --accent-gradient: linear-gradient(135deg, #0284c7, #6366f1);
   --badge-bg: rgba(2,132,199,.1);
   --badge-text: #0284c7;
+  --english-bg: #ede9fe;
+  --english-card-bg: #ffffff;
+  --english-accent: #7c3aed;
   --shadow-sm: 0 2px 8px rgba(0,0,0,.06);
   --shadow-md: 0 8px 24px rgba(0,0,0,.08);
 }
@@ -69,6 +75,7 @@ ul{list-style:none}
   background:var(--bg-secondary);border:1px solid var(--border-color);border-radius:50%;
   width:38px;height:38px;font-size:1.05rem;cursor:pointer;
   display:flex;align-items:center;justify-content:center;transition:var(--transition);
+  color:var(--text-main);
 }
 .theme-btn:hover{border-color:var(--primary);transform:scale(1.08)}
 .mobile-toggle{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer}
@@ -88,11 +95,12 @@ ul{list-style:none}
 .hero-subtitle strong{color:var(--text-main)}
 .hero-buttons{display:flex;justify-content:center;gap:1rem;flex-wrap:wrap}
 .btn{display:inline-block;padding:.8rem 1.7rem;border-radius:8px;font-weight:600;text-decoration:none;font-size:.93rem;transition:var(--transition)}
+.btn-sm{padding:.55rem 1.2rem;font-size:.85rem}
 .btn-primary{background:var(--primary);color:#0f172a}
 [data-theme="light"] .btn-primary{color:#fff}
-.btn-primary:hover{background:var(--primary-hover);transform:translateY(-2px);box-shadow:0 8px 20px rgba(56,189,248,.3)}
+.btn-primary:hover{background:var(--primary-hover);transform:translateY(-2px);box-shadow:0 8px 20px rgba(56,189,248,.3);text-decoration:none}
 .btn-outline{border:1px solid var(--border-color);color:var(--text-main);background:var(--bg-secondary)}
-.btn-outline:hover{border-color:var(--primary);transform:translateY(-2px)}
+.btn-outline:hover{border-color:var(--primary);transform:translateY(-2px);text-decoration:none}
 
 /* ══════ Sections ══════ */
 .section{padding:4.5rem 0}
@@ -100,6 +108,15 @@ ul{list-style:none}
 .section-header{text-align:center;margin-bottom:3rem}
 .section-tag{text-transform:uppercase;font-size:.72rem;font-weight:700;letter-spacing:1.5px;color:var(--primary);display:block;margin-bottom:.4rem}
 .section-title{font-size:1.9rem;font-weight:800;letter-spacing:-.5px}
+
+/* ══════ Card Icon (text-based, no emoji) ══════ */
+.card-icon-text{
+  display:inline-flex;align-items:center;justify-content:center;
+  width:48px;height:48px;border-radius:10px;font-size:1rem;font-weight:800;
+  background:var(--accent-gradient);color:#fff;margin-bottom:1rem;letter-spacing:-.5px;
+}
+.card-icon-text.en{background:linear-gradient(135deg,#7c3aed,#a78bfa)}
+.card-icon-text.cert-icon{background:linear-gradient(135deg,#059669,#34d399);font-size:1.1rem}
 
 /* ══════ Timeline ══════ */
 .timeline{max-width:720px;margin:0 auto;position:relative;padding-left:2rem}
@@ -129,7 +146,6 @@ ul{list-style:none}
 }
 .subject-card:hover{transform:translateY(-4px);border-color:var(--primary);box-shadow:var(--shadow-md)}
 .subject-card.highlight-card{border-color:var(--primary);box-shadow:0 0 0 1px var(--primary),var(--shadow-md)}
-.card-icon{font-size:2.2rem;margin-bottom:1rem}
 .card-badge{
   position:absolute;top:1rem;right:1rem;font-size:.65rem;font-weight:700;text-transform:uppercase;
   letter-spacing:1px;padding:.2rem .6rem;border-radius:4px;
@@ -153,6 +169,66 @@ ul{list-style:none}
 .info-box ul{padding-left:1.1rem;list-style:disc}
 .info-box li{font-size:.85rem;color:var(--text-muted);margin-bottom:.3rem}
 .info-box li strong{color:var(--text-main)}
+
+/* ══════ Link Banners (Cermat, FCE practice) ══════ */
+.link-banner{
+  display:flex;align-items:center;gap:1.2rem;
+  background:var(--bg-card);border:1px solid var(--border-color);border-radius:var(--radius);
+  padding:1.4rem 1.6rem;margin-top:2.5rem;box-shadow:var(--shadow-sm);
+  flex-wrap:wrap;transition:var(--transition);
+}
+.link-banner:hover{border-color:var(--primary);transform:translateY(-2px)}
+.link-banner-icon{
+  display:inline-flex;align-items:center;justify-content:center;flex-shrink:0;
+  width:44px;height:44px;border-radius:10px;font-size:1.1rem;font-weight:800;
+  background:linear-gradient(135deg,#dc2626,#f87171);color:#fff;
+}
+.link-banner-icon.en{background:linear-gradient(135deg,#7c3aed,#a78bfa)}
+.link-banner h4{font-size:.95rem;margin-bottom:.15rem}
+.link-banner p{font-size:.82rem;color:var(--text-muted);margin:0}
+.link-banner .btn{margin-left:auto;flex-shrink:0;white-space:nowrap}
+.link-banner-en{margin-top:2.5rem}
+
+/* ══════ English Section – unique background ══════ */
+.section-english{
+  background:var(--english-bg);
+  position:relative;
+}
+.section-english::before{
+  content:'';position:absolute;top:0;left:0;right:0;bottom:0;
+  background:radial-gradient(ellipse at 20% 0%, rgba(124,58,237,.12) 0%, transparent 60%),
+             radial-gradient(ellipse at 80% 100%, rgba(56,189,248,.08) 0%, transparent 50%);
+  pointer-events:none;
+}
+.section-english .subject-card{background:var(--english-card-bg)}
+.section-english .info-box{background:rgba(0,0,0,.15)}
+[data-theme="light"] .section-english .info-box{background:rgba(124,58,237,.06)}
+
+/* ══════ FCE Section ══════ */
+.fce-section{
+  margin-top:3rem;padding:2.5rem;
+  background:var(--english-card-bg);border:1px solid var(--border-color);
+  border-radius:var(--radius);box-shadow:var(--shadow-sm);position:relative;
+}
+.fce-title{font-size:1.3rem;font-weight:800;margin-bottom:.4rem}
+.fce-subtitle{color:var(--text-muted);font-size:.93rem;margin-bottom:1.5rem}
+.fce-subtitle strong{color:var(--text-main)}
+.table-responsive{overflow-x:auto;-webkit-overflow-scrolling:touch}
+.fce-table{width:100%;border-collapse:collapse;font-size:.88rem;min-width:650px}
+.fce-table th,.fce-table td{
+  padding:.85rem 1rem;text-align:left;border-bottom:1px solid var(--border-color);vertical-align:top;
+}
+.fce-table th{
+  background:rgba(124,58,237,.12);font-weight:700;text-transform:uppercase;font-size:.7rem;
+  letter-spacing:1px;color:var(--english-accent);
+}
+[data-theme="light"] .fce-table th{color:#7c3aed}
+.fce-table td{color:var(--text-muted)}
+.fce-table td strong{color:var(--text-main)}
+.fce-table td small{opacity:.75;display:block;margin-top:.15rem}
+.fce-table td ol{padding-left:1.1rem;margin:.3rem 0 0;list-style:decimal}
+.fce-table td ol li{margin-bottom:.15rem}
+.fce-table tbody tr:hover{background:rgba(124,58,237,.06)}
 
 /* ══════ Exam Flow ══════ */
 .elektro-intro{text-align:center;max-width:750px;margin:0 auto 2.5rem;color:var(--text-muted);font-size:.95rem}
@@ -178,7 +254,6 @@ ul{list-style:none}
 /* ══════ Detail Table ══════ */
 .detail-table-wrap{margin-bottom:2.5rem}
 .table-title{font-size:1.1rem;margin-bottom:1rem}
-.table-responsive{overflow-x:auto;-webkit-overflow-scrolling:touch}
 .detail-table{width:100%;border-collapse:collapse;font-size:.88rem;min-width:600px}
 .detail-table th,.detail-table td{
   padding:.9rem 1rem;text-align:left;border-bottom:1px solid var(--border-color);
@@ -258,4 +333,7 @@ ul{list-style:none}
   .flow-arrow{transform:rotate(90deg);text-align:center}
   .footer-container{flex-direction:column;gap:.8rem;text-align:center}
   .grade-grid{flex-direction:column}
+  .link-banner{flex-direction:column;text-align:center}
+  .link-banner .btn{margin:0 auto}
+  .fce-section{padding:1.5rem}
 }
